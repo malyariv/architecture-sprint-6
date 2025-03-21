@@ -1,0 +1,23 @@
+$ kubectl describe horizontalpodautoscalers.autoscaling 
+Name:                                                     task2
+Namespace:                                                default
+Labels:                                                   <none>
+Annotations:                                              <none>
+CreationTimestamp:                                        Tue, 18 Mar 2025 09:39:33 +0400
+Reference:                                                Deployment/task2
+Metrics:                                                  ( current / target )
+  resource memory on pods  (as a percentage of request):  26% (8418645333m) / 30%
+Min replicas:                                             1
+Max replicas:                                             10
+Deployment pods:                                          3 current / 3 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from memory resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age    From                       Message
+  ----    ------             ----   ----                       -------
+  Normal  SuccessfulRescale  6m32s  horizontal-pod-autoscaler  New size: 2; reason: memory resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  2m32s  horizontal-pod-autoscaler  New size: 3; reason: memory resource utilization (percentage of request) above target
